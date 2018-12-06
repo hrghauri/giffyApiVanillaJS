@@ -1,6 +1,6 @@
 const api = {
   baseUrl: "http://api.giphy.com/v1/gifs/trending",
-  api_key: "Your Api Key Here"
+  api_key: "Qwg11FMWcnfnPz1ewNeMk8yMoJ7lx6uF"
 };
 
 let limit;
@@ -34,20 +34,43 @@ function addItems() {
       });
     })
     .catch(e => console.log(e.message));
+
+  //scrolling Test
+  // for (let i = 0; i < limit; i++) {
+  //   var para = document.createElement("p");
+  //   var node = document.createTextNode("This is new.");
+  //   para.appendChild(node);
+  //   var rootElement = document.getElementById("root");
+  //   rootElement.appendChild(para);
+  // }
 }
 
 function init() {
-  limit = 10;
+  limit = 20;
   offset = 0;
   addItems();
+  window.onscroll = onScroll;
 }
 
-window.onscroll = function(ev) {
+// window.onscroll = function(ev) {
+//   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//     alert("you're at the bottom of the page");
+//   }
+// };
+
+function onScroll(ev) {
   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
     offset = offset + limit;
+    if (limit != 10) limit = limit - 5;
     console.log("scrolled at the bottom");
     addItems();
+
+    window.onscroll = null;
+    console.log("timeout");
+    setTimeout(() => {
+      window.onscroll = onScroll;
+    }, 500);
   }
-};
+}
 
 init();
