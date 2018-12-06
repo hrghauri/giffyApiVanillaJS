@@ -1,6 +1,6 @@
 const api = {
   baseUrl: "http://api.giphy.com/v1/gifs/trending",
-  api_key: "Qwg11FMWcnfnPz1ewNeMk8yMoJ7lx6uF"
+  api_key: "Replace Your Api here"
 };
 
 let limit;
