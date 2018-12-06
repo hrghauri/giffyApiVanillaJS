@@ -3,8 +3,8 @@ const api = {
   api_key: "Your Api Key Here"
 };
 
-let limit = 10;
-let offset = 0;
+let limit;
+let offset;
 
 function addItems() {
   let url =
@@ -37,6 +37,8 @@ function addItems() {
 }
 
 function init() {
+  limit = 10;
+  offset = 0;
   addItems();
 }
 
